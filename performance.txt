@@ -1,0 +1,30 @@
+test environment: i7-4770 3.4 ghz (8 cores) ssd
+
+input: dataset.txt, queries.txt**
+output: none (since this stays constant for all tests all filewrites are skipped)
+
+format: FUNCTIONALITY: total time (sec), preprocessing time (sec)
+
+
+DIHASH, 	4SIMPS, ETD, 	JUMPS, 		QUEUES: 		6.772 		0.914
+DIHASH, 	4SIMPS, NO ETD, JUMPS, 		QUEUES: 		7.402 		0.880
+DIHASH, 	4SIMPS, ETD, 	NO JUMPS, 	QUEUES: 		9.035		0.844
+NO DIHASH*, 4SIMPS, ETD, 	JUMPS, 		QUEUES: 		10.125		0.894
+NO DIHASH*, 0SIMPS, NO ETD, JUMPS, 		QUEUES: 		220.865		0.153
+
+DIHASH, 	3SIMPS, ETD, 	JUMPS, 		QUEUES:			7.038		0.656
+DIHASH, 	2SIMPS, ETD, 	JUMPS, 		QUEUES:			7.687		0.464
+DIHASH, 	1SIMPS, ETD, 	JUMPS, 		QUEUES:			16.308		0.281
+DIHASH, 	0SIMPS, ETD, 	JUMPS, 		QUEUES:			94.757		0.167
+
+
+
+remarks:
+*(NO DIHASH) means that the DIHASH datastructure is not used, but later rangechecks still trivially solve the trajectory pairs normally pruned by the DIHASH. 
+	This means that using the DIHASH saves us from looping over the dataset one by one, but not necessarily avoids doing detailed computations.
+		This explains the relatively low impact of removing the DIHASH step, compared to the fraction of the input it prunes.
+			For legacy reasons, preprocessing time of the DIHASH is still counted, even though it is not used, but it is very insignificant.
+			
+** (queries.txt) The queries are generated from the sample dataset such that the average query returns ~2% of the input dataset, with output
+		ranging from 0% (3% of queries) to >30% (2% of queries) of the dataset. Some query deltas are equal to the frechet distance of a trajectory pair, which may
+			result in bad output because of precision loss. The query set is not necessarily realistic, but works well for general testing.
