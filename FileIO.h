@@ -97,8 +97,8 @@ public:
 		return t;
 	}
 
-	#define BUFFER_SIZE (1024 * 1024 * 1024)//1Mb
-	#define READ_SIZE (1024 * 1024 * 5)//5kb
+	#define BUFFER_SIZE (1024 * 1024)//1Mb
+	#define READ_SIZE (1024 * 5)//5kb
 
 	//std::vector<char> buffer = std::vector<char>(BUFFER_SIZE);
 	char* buffer = nullptr;
