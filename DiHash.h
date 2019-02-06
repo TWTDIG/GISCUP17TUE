@@ -76,8 +76,8 @@ public:
 			break;
 		}
 		// check that we are not exactly at the maximum or minimum value
-		if (fabs(max - val) < tol) retorn = slotsPerDimension - 1;
-		else if (fabs(min - val) < tol) retorn = 0;
+        if (fabs(min - val) < tol) retorn = 0;
+        else if (fabs(max - val) < tol) retorn = slotsPerDimension - 1;
 		else {
 			double pas = (fabs(max - min) / slotsPerDimension);
 
