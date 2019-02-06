@@ -1,3 +1,6 @@
+
+## Note that the consolidated top 3 GISCUP entries can be found in compiled form in the repository https://github.com/mwernerds/frechetrange, which contains an updated version of this repository and is also easier to use.
+
 ### Giscup 2017 entry from TU Eindhoven
 This is the code as submitted for the competition, with a bit of additional documentation.
 
